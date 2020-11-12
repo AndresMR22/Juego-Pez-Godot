@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Pase.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Backgrounds/Let/Barrel_1.png" type="Texture" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 92.2744
+height = 86.3887
+
+[node name="Pase" type="Area2D"]
+position = Vector2( 525.629, 259.247 )
+rotation = 1.5708
+scale = Vector2( 0.7, 0.7 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+[connection signal="body_entered" from="." to="." method="_on_Pase_body_entered"]

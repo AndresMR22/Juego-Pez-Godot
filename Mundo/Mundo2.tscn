@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Sprites/Goal/goal.jpg" type="Texture" id=1]
+
+[node name="Mundo2" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 537.522, 323.464 )
+scale = Vector2( 1.96001, 1.57729 )
+texture = ExtResource( 1 )

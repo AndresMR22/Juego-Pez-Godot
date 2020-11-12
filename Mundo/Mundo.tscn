@@ -1,0 +1,106 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Jugador/Fish.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Jugador/Fish.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/Backgrounds/4_game_background/layers/2.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Backgrounds/4_game_background/layers/1.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Backgrounds/4_game_background/layers/5.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Backgrounds/4_game_background/layers/3.png" type="Texture" id=6]
+[ext_resource path="res://Alimentos/Comida.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Sprites/Backgrounds/4_game_background/layers/4.png" type="Texture" id=8]
+[ext_resource path="res://Mundo/ParallaxLayer.gd" type="Script" id=9]
+[ext_resource path="res://TipoLetra/ARIALBI.TTF" type="DynamicFontData" id=10]
+[ext_resource path="res://Mundo/Mundo.gd" type="Script" id=11]
+[ext_resource path="res://Mundo/Pase.tscn" type="PackedScene" id=12]
+
+[sub_resource type="DynamicFont" id=1]
+size = 60
+font_data = ExtResource( 10 )
+
+[node name="Mundo" type="Node2D"]
+script = ExtResource( 11 )
+
+[node name="Fish" parent="." instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+offset = Vector2( 250, 150 )
+scale = Vector2( 0.6, 0.6 )
+transform = Transform2D( 0.6, 0, 0, 0.6, 250, 150 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1900, 0 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Capa1" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 550, 300 )
+texture = ExtResource( 4 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1900, 0 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Capa2" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2( 550, 300 )
+texture = ExtResource( 3 )
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Capa3" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2( 550, 300 )
+texture = ExtResource( 6 )
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Capa4" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2( 550, 300 )
+texture = ExtResource( 8 )
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Capa5" type="Sprite" parent="ParallaxBackground/ParallaxLayer5"]
+position = Vector2( 550, 300 )
+texture = ExtResource( 5 )
+
+[node name="Comida" parent="." instance=ExtResource( 7 )]
+position = Vector2( 115.412, 223.613 )
+
+[node name="Comida2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 901.418, 546.773 )
+
+[node name="Comida3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 289.759, 561.353 )
+
+[node name="Puntos" type="Label" parent="."]
+margin_left = 500.0
+margin_right = 875.0
+margin_bottom = 102.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.176471, 0.294118, 0.329412, 1 )
+text = "PUNTAJE"
+max_lines_visible = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pase" parent="." instance=ExtResource( 12 )]
+position = Vector2( 992.331, 442.385 )
+[connection signal="body_entered" from="Comida" to="Fish" method="_on_Comida_body_entered"]
+[connection signal="body_entered" from="Comida2" to="Fish" method="_on_Comida2_body_entered"]
+[connection signal="body_entered" from="Comida3" to="Fish" method="_on_Comida3_body_entered"]
+[connection signal="body_entered" from="Pase" to="." method="_on_Pase_body_entered"]
