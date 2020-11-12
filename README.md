@@ -1,4 +1,6 @@
 # Juego-Pez-Godot
+Herramientas para su ejecución:
+Descargar e instalar Godot
 Botones:
 1. Tecla Arriba ->up
 2. Tecla Abajo ->down
